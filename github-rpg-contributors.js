@@ -75,11 +75,27 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
             var(--ddd-font-size-s)
           );
         }
-        .rpg-wrapper {
-          display: inline-flex;
-        }
         details {
           display: block;
+        }
+        .results {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+        .rpg-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 10px;
+          border: 1px solid var(--ddd-theme-primary);
+          border-radius: 10px;
+          background-color: var(--ddd-theme-accent);
+        }
+        .contributor p {
+          margin: 5px 0;
+          font-size: 14px;
         }
       `,
     ];
@@ -96,18 +112,7 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
             >https://github.com/${this.organization}/${this.repo}</a
           >
         </summary>
-        <div>
-          <input
-            id="orgInput"
-            placeholder="Enter Organization"
-            @input="${this.handleOrgInput}"
-          />
-          <input
-            id="repoInput"
-            placeholder="Enter Repo"
-            @input="${this.handleRepoInput}"
-          />
-        </div>
+        <div></div>
       </details>
       ${this.loading ? html`<div class="loading">Loading...</div>` : ""}
       <div class="results">
