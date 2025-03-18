@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="Description"
+      content="Demonstration for github-rpg-contributors"
+    />
+
+    <style>
+      :root,
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #demo {
+        margin: var(--ddd-spacing-2);
+      }
+      github-rpg-contributors {
+        margin: var(--ddd-spacing-2);
+        border: var(--ddd-border-md);
+        border-radius: var(--ddd-radius-lg);
+      }
+      github-rpg-contributors:hover {
+        box-shadow: var(--ddd-boxShadow-sm);
+      }
+      #example {
+        --github-rpg-contributors-font-size: var(--ddd-font-size-l);
+        background-color: var(--ddd-accent-2);
+        color: var(--ddd-primary-17);
+      }
+    </style>
+    <title>github-rpg-contributors</title>
+  </head>
+
+  <body>
+    <div id="demo">
+      <h1>github-rpg-contributors</h1>
+      <!-- this is going to do whatever the tag's defaults are -->
+      <h2>Default</h2>
+      <github-rpg-contributors></github-rpg-contributors>
+      <h2>Slot usage</h2>
+      <github-rpg-contributors data-accent="2" data-primary="17"
+        ><div>Sample slot content</div></github-rpg-contributors
+      >
+      <h2>Property usage</h2>
+      <github-rpg-contributors
+        id="example"
+        title="Sample property title"
+      ></github-rpg-contributors>
+    </div>
+    <script type="module" src="./github-rpg-contributors.js"></script>
+
+    <!-- Take HAX, the Web and you further down the rabbit hole -->
+  </body>
+</html>
