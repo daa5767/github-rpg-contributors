@@ -78,6 +78,9 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
         .rpg-wrapper {
           display: inline-flex;
         }
+        details {
+          display: block;
+        }
       `,
     ];
   }
@@ -87,7 +90,12 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
     return html`
       <h2>${this.title}</h2>
       <details open>
-        <summary>Search Github Contributors</summary>
+        <summary>
+          Github Contributors:
+          <a href="https://github.com/${this.organization}/${this.repo}"
+            >https://github.com/${this.organization}/${this.repo}</a
+          >
+        </summary>
         <div>
           <input
             id="orgInput"
@@ -105,10 +113,14 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
       <div class="results">
         ${this.items.map(
           (item) => html`
-            <rpg-character></rpg-character>
-            <div class="contributor">
-              <img src="${item.avatar_url}" width="50" height="50" />
-              <p>${item.login}</p>
+            <div class="rpg-wrapper">
+              <a href="${item.html_url}?tab=repositories"
+                ><rpg-character seed=${item.login}></rpg-character
+              ></a>
+              <div class="contributor">
+                <p>Username: ${item.login}</p>
+                <p>Contributions: ${item.contributions}</p>
+              </div>
             </div>
           `
         )}
