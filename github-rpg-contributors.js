@@ -46,10 +46,10 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      organization: { type: String },
-      repo: { type: String },
+      organization: { type: String, reflect: true },
+      repo: { type: String, reflect: true },
       limit: { type: Number },
-      items: { type: Array },
+      items: { type: Array, reflect: true },
       loading: { type: Boolean },
     };
   }
@@ -105,6 +105,13 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
       <h2>${this.title}</h2>
+
+      <label>Organization:</label>
+      <input id="org" type="text" />
+      <label>Repo:</label>
+      <input id="repo" type="text" />
+      <button @click="${this.handleClick}">Submit</button>
+
       <details open>
         <summary>
           Github Contributors:
@@ -131,6 +138,11 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
         )}
       </div>
     `;
+  }
+
+  handleClick() {
+    this.organization = this.shadowRoot.querySelector("#org").value;
+    this.repo = this.shadowRoot.querySelector("#repo").value;
   }
 
   updated(changedProperties) {
